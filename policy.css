@@ -1,0 +1,84 @@
+        .Violet {
+            color: #6e20a7;
+        }
+
+        /* animation */
+        .head_anim {
+            animation: headX 0.5s;
+        }
+
+        @keyframes headX {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .cardX_move {
+            animation: effect 1s;
+            transition: 0.5s;
+
+        }
+
+        @keyframes effect {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .cardX_lmove {
+            animation: effectlmove 1s;
+            transition: 0.5s;
+        }
+
+        @keyframes effectlmove {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .cardY_move {
+            animation: effectLeft 1s;
+            transition: 0.5s;
+        }
+
+        @keyframes effectLeft {
+            0% {
+                transform: translateX(100%)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        .cardX_move:hover {
+            transition: 0.5s;
+            transform: scale(1.01, 1.01);
+        }
+
+        .cardY_move:hover {
+            transition: 0.5s;
+            transform: scale(1.01, 1.01);
+        }
+
+        .cardX_lmove:hover {
+            transition: 0.5s;
+            transform: scale(1.001, 1.001);
+        }
+
+        .card_hover:hover {
+            box-shadow: 5px 10px 18px gray;
+
+        }
