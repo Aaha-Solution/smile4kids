@@ -1,0 +1,54 @@
+{
+  "info": {
+    "name": "Smile4Kids API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"your@email.com\",\n  \"password\": \"yourpassword\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost/smile4kids/api/login.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["smile4kids", "api", "login.php"]
+        }
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost/smile4kids/api/logout.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["smile4kids", "api", "logout.php"]
+        }
+      }
+    },
+    {
+      "name": "Who Am I",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost/smile4kids/api/me.php",
+          "protocol": "http",
+          "host": ["localhost"],
+          "path": ["smile4kids", "api", "me.php"]
+        }
+      }
+    }
+  ]
+} 
