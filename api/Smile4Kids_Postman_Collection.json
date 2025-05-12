@@ -1,0 +1,332 @@
+{
+  "info": {
+    "name": "Smile4Kids Video API Collection",
+    "description": "API collection for Smile4Kids video endpoints for Hindi, Punjabi, and Gujarati videos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"kpritha9249@gmail.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/login.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "login.php"]
+            },
+            "description": "Login to get session authentication"
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/logout.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "logout.php"]
+            },
+            "description": "Logout and clear session"
+          }
+        },
+        {
+          "name": "Who Am I",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/me.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "me.php"]
+            },
+            "description": "Get current user information"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Password Management",
+      "item": [
+        {
+          "name": "Request Password Reset OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"kpritha9249@gmail.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/forgot-password.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "forgot-password.php"]
+            },
+            "description": "Request a password reset OTP"
+          }
+        },
+        {
+          "name": "Reset Password with OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"otp\": \"123456\",\n  \"new_password\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reset-password.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reset-password.php"]
+            },
+            "description": "Reset password using OTP"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Video Management",
+      "item": [
+        {
+          "name": "Get Hindi Junior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Hindi&category=junior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Hindi"
+                },
+                {
+                  "key": "category",
+                  "value": "junior"
+                }
+              ]
+            },
+            "description": "Get Hindi junior videos"
+          }
+        },
+        {
+          "name": "Get Hindi Prejunior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Hindi&category=prejunior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Hindi"
+                },
+                {
+                  "key": "category",
+                  "value": "prejunior"
+                }
+              ]
+            },
+            "description": "Get Hindi prejunior videos"
+          }
+        },
+        {
+          "name": "Get Punjabi Junior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Panjabi&category=junior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Panjabi"
+                },
+                {
+                  "key": "category",
+                  "value": "junior"
+                }
+              ]
+            },
+            "description": "Get Punjabi junior videos"
+          }
+        },
+        {
+          "name": "Get Punjabi Prejunior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Panjabi&category=prejunior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Panjabi"
+                },
+                {
+                  "key": "category",
+                  "value": "prejunior"
+                }
+              ]
+            },
+            "description": "Get Punjabi prejunior videos"
+          }
+        },
+        {
+          "name": "Get Gujarati Junior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Gujarati&category=junior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Gujarati"
+                },
+                {
+                  "key": "category",
+                  "value": "junior"
+                }
+              ]
+            },
+            "description": "Get Gujarati junior videos"
+          }
+        },
+        {
+          "name": "Get Gujarati Prejunior Videos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/videos.php?language=Gujarati&category=prejunior",
+              "host": ["{{base_url}}"],
+              "path": ["api", "videos.php"],
+              "query": [
+                {
+                  "key": "language",
+                  "value": "Gujarati"
+                },
+                {
+                  "key": "category",
+                  "value": "prejunior"
+                }
+              ]
+            },
+            "description": "Get Gujarati prejunior videos"
+          }
+        },
+        {
+          "name": "Upload Video (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "language",
+                  "value": "Gujarati",
+                  "type": "text"
+                },
+                {
+                  "key": "category",
+                  "value": "junior",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Sample Video",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is a sample video for Gujarati junior category",
+                  "type": "text"
+                },
+                {
+                  "key": "video",
+                  "type": "file",
+                  "src": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/upload-video.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "upload-video.php"]
+            },
+            "description": "Upload a new video (Admin only)"
+          }
+        },
+        {
+          "name": "Delete Video (Admin Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "id",
+                  "value": "123",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/delete-video.php",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete-video.php"]
+            },
+            "description": "Delete a video by ID (Admin only)"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/smile4kids",
+      "type": "string"
+    }
+  ]
+}
