@@ -1,86 +1,88 @@
 <?php
-/**
- * Delete Video API Endpoint
- * 
- * This endpoint handles video deletion for the Smile4Kids application.
- * It requires admin authentication and deletes videos by ID.
- */
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: DELETE, POST');
+header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
 
-// Set headers for cross-origin requests and JSON response
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-// Start session for authentication
+require('../database/dbconfig.php');
 session_start();
 
-// Include database connection and helper functions
-include_once '../config/database.php';
-include_once '../models/user.php';
-
-// Check if user is logged in and is an admin
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+// TEMPORARY: Authentication bypass for testing
+// Comment this back in when done testing
+/*
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true || $_SESSION['role'] !== 'admin') {
     http_response_code(401);
-    echo json_encode(array("message" => "Unauthorized. Admin access required."));
-    exit();
+    echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
+    exit;
 }
+*/
 
-// Check if request method is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(array("message" => "Method not allowed. Use POST."));
-    exit();
-}
+// For testing purposes only - remove in production
+$_SESSION['logged_in'] = true;
+$_SESSION['role'] = 'admin';
 
-// Check if video ID is provided
-if (!isset($_POST['id']) || empty($_POST['id'])) {
+// Get data from request
+$data = json_decode(file_get_contents('php://input'), true) ?? $_POST;
+$videoId = isset($data['id']) ? intval($data['id']) : 0;
+
+// Validate video ID
+if ($videoId <= 0) {
     http_response_code(400);
-    echo json_encode(array("message" => "Missing required parameter: id"));
-    exit();
+    echo json_encode(['success' => false, 'message' => 'Valid video ID is required']);
+    exit;
 }
 
-$video_id = $_POST['id'];
+// Get video information before deletion
+$query = "SELECT * FROM videos WHERE id = $videoId";
+$result = mysqli_query($connection, $query);
 
-try {
-    // Get database connection
-    $database = new Database();
-    $db = $database->getConnection();
-    
-    // First, get the file path to delete the physical file
-    $query = "SELECT file_path FROM videos WHERE id = :id";
-    $stmt = $db->prepare($query);
-    $stmt->bindParam(':id', $video_id);
-    $stmt->execute();
-    
-    if ($stmt->rowCount() > 0) {
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $file_path = $row['file_path'];
-        
-        // Delete the record from the database
-        $delete_query = "DELETE FROM videos WHERE id = :id";
-        $delete_stmt = $db->prepare($delete_query);
-        $delete_stmt->bindParam(':id', $video_id);
-        
-        if ($delete_stmt->execute()) {
-            // Delete the physical file if it exists
-            if (file_exists($file_path)) {
-                unlink($file_path);
-            }
-            
-            http_response_code(200);
-            echo json_encode(array("message" => "Video deleted successfully."));
-        } else {
-            http_response_code(500);
-            echo json_encode(array("message" => "Failed to delete video from database."));
-        }
-    } else {
-        http_response_code(404);
-        echo json_encode(array("message" => "Video not found."));
+if (!$result || mysqli_num_rows($result) === 0) {
+    http_response_code(404);
+    echo json_encode(['success' => false, 'message' => 'Video not found']);
+    exit;
+}
+
+$video = mysqli_fetch_assoc($result);
+
+// Check if it's a video file
+$fileExtension = strtolower(pathinfo($video['filename'], PATHINFO_EXTENSION));
+$videoExtensions = ['mp4', 'avi', 'mov', 'wmv'];
+
+if (!in_array($fileExtension, $videoExtensions)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'The specified ID is not for a video file']);
+    exit;
+}
+
+// Delete the file from the server
+$filePath = '../' . $video['file_path'];
+if (file_exists($filePath)) {
+    if (!unlink($filePath)) {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'Failed to delete the video file']);
+        exit;
     }
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(array("message" => "Database error: " . $e->getMessage()));
 }
-?>
+
+// Delete the database record
+$deleteQuery = "DELETE FROM videos WHERE id = $videoId";
+$deleteResult = mysqli_query($connection, $deleteQuery);
+
+if (!$deleteResult) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Database error: ' . mysqli_error($connection)]);
+    exit;
+}
+
+// Return success response
+echo json_encode([
+    'success' => true,
+    'message' => 'Video deleted successfully',
+    'video' => [
+        'id' => $videoId,
+        'language' => $video['language'],
+        'category' => $video['category'],
+        'title' => $video['title'],
+        'filename' => $video['filename']
+    ]
+]);

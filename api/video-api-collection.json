@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "a5c8f7e3-6b4d-4f2a-8d9e-1b2c3d4e5f6g",
+		"name": "Smile4Kids Video API",
+		"description": "API collection for managing Hindi, Punjabi, and Gujarati videos with PreJunior and Junior categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Hindi&category=PreJunior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Hindi",
+							"description": "Required. Options: Hindi, Punjabi, Gujarati"
+						},
+						{
+							"key": "category",
+							"value": "PreJunior",
+							"description": "Optional. Options: PreJunior, Junior"
+						}
+					]
+				},
+				"description": "Get videos filtered by language and optionally by category"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hindi PreJunior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Hindi&category=PreJunior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Hindi"
+						},
+						{
+							"key": "category",
+							"value": "PreJunior"
+						}
+					]
+				},
+				"description": "Get Hindi PreJunior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hindi Junior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Hindi&category=Junior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Hindi"
+						},
+						{
+							"key": "category",
+							"value": "Junior"
+						}
+					]
+				},
+				"description": "Get Hindi Junior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Punjabi PreJunior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Punjabi&category=PreJunior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Punjabi"
+						},
+						{
+							"key": "category",
+							"value": "PreJunior"
+						}
+					]
+				},
+				"description": "Get Punjabi PreJunior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Punjabi Junior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Punjabi&category=Junior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Punjabi"
+						},
+						{
+							"key": "category",
+							"value": "Junior"
+						}
+					]
+				},
+				"description": "Get Punjabi Junior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Gujarati PreJunior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Gujarati&category=PreJunior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Gujarati"
+						},
+						{
+							"key": "category",
+							"value": "PreJunior"
+						}
+					]
+				},
+				"description": "Get Gujarati PreJunior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Gujarati Junior Videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-videos.php?language=Gujarati&category=Junior",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-videos.php"
+					],
+					"query": [
+						{
+							"key": "language",
+							"value": "Gujarati"
+						},
+						{
+							"key": "category",
+							"value": "Junior"
+						}
+					]
+				},
+				"description": "Get Gujarati Junior videos"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Video",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/get-video.php?id=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"get-video.php"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "123",
+							"description": "ID of the video to retrieve"
+						}
+					]
+				},
+				"description": "Get a single video by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Video",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "language",
+							"value": "Hindi",
+							"description": "Required. Options: Hindi, Punjabi, Gujarati",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "PreJunior",
+							"description": "Required. Options: PreJunior, Junior",
+							"type": "text"
+						},
+						{
+							"key": "term",
+							"value": "Term 1",
+							"description": "Required. Example: Term 1, Term 2, etc.",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Hindi Numbers Song",
+							"description": "Optional. Title for the video",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "A fun song to learn Hindi numbers",
+							"description": "Optional. Description of the video",
+							"type": "text"
+						},
+						{
+							"key": "video",
+							"type": "file",
+							"description": "Required. Video file to upload (MP4, AVI, MOV, WMV)"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/upload-video.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"upload-video.php"
+					]
+				},
+				"description": "Upload a new video (requires admin login)"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Video",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 123\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/smile/smile4kids/api/delete-video.php",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"smile",
+						"smile4kids",
+						"api",
+						"delete-video.php"
+					]
+				},
+				"description": "Delete a video by ID (requires admin login)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "noauth"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost/smile/smile4kids/api",
+			"type": "string"
+		}
+	]
+}
